@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>蜗牛旅行</title>
+    <style media="screen">
+    	.a{
+			float: left;
+			height: 650px;
+			width: 17%;
+      height: 100%;
+			background-color: #207B94;
+			position:fixed;
+			left:10px;
+
+		}
+		.a a{
+			text-decoration: none;
+			display: block;
+			color: white;
+			height: 50px;
+			line-height: 50px;
+			font-size: 18px;
+			padding-left: 45px;
+			border-bottom: 1px dashed ghostwhite;
+			
+		}
+		.a a:hover { 
+			color:orange; 
+			text-decoration: underline;
+			font-size: 20px;
+			font-weight: bold;
+		} 
+		.snail{
+			width: 100%;
+			text-align: center;
+			margin-bottom: 30px;
+		}
+		.snail img{
+			width: 50%;
+		}
+		.content-wrap{
+			float: right;
+			width: 82%;
+			height: 650px;
+		}
+      .shadow{
+          position:fixed;
+          width:100%;
+          height:100%;
+          background:#000;
+          opacity:0.3;
+          /* filter:alpha(opacity:30);
+          left:0;
+          top:0; */
+      }
+      .mod_dialog{
+        width:500px;
+        height:400px;
+        border:1px solid black;
+        background:#fff;
+        position:fixed;
+        left:50%;
+        top:20%;
+        margin-left:-150px;
+        
+      }
+      a{
+        text-decoration: none;
+        
+      }
+      .article{
+        overflow: hidden!important;
+        display: -webkit-box;
+        -webkit-box-orient:vertical;
+        -webkit-line-clamp:3!important;
+      }
+      td{
+        word-break:keep-all;/* 不换行 */
+        white-space:nowrap;/* 不换行 */
+        overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+        text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+        height: 40px;
+      }
+      table{
+        table-layout:fixed;
+        text-align: center;
+      }
+      .mod{
+      background: #FAFAFF;  
+      border: 1px solid #207B94; 
+      color: #207B94; 
+      border-radius: 4px;  
+      border-spacing: 0;  
+      box-shadow: 1px 1px 1px #eee;  
+      padding: 1px 4px;  
+      white-space: nowrap;  
+      vertical-align: baseline;  
+   }
+    .del{
+      background: #FAFAFF;  
+      border: 1px solid grey; 
+      color: grey; 
+      border-radius: 4px;  
+      border-spacing: 0;  
+      box-shadow: 1px 1px 1px #eee;  
+      padding: 1px 4px;  
+      white-space: nowrap;  
+      vertical-align: baseline;  
+    }
+    .title{
+        border:0;
+        background-color: #207B94;
+        height: 50px;
+      }
+     
+    </style>
+    </head>
+<body style="background-image: url(/upload/d1.png);">
+       <div class="page" >
+        <div class="a">
+          <div class="snail">
+            <img src="/upload/snail.png"/>
+          </div>
+          <% include components/left-inc.ejs %>
+        </div>
+		
+        <div class="content-wrap" >
+          	<% include components/admin.ejs %>
+          <!-- <div>
+            <form action="?" method="post" >
+              用户：<input type="text" name="username" style="width:40%" /><br>
+              标题：<input type="text" name="title"  style="width:40%"/><br>
+              描述：<input type="text" name="description" style="width:40%" /><br>
+              文章：<br><textarea name="article"  style="width:44%;height:200px;"></textarea><br>
+                <input type="submit" value="添加" />
+            </form>
+          </div>  -->
+          <br> 
+          <!--<%= banners%>-->
+          <table border="1" width="100%" cellspacing="0" cellpadding="0" style="margin-top:-80px;">
+              <thead>
+                <tr class="title">
+                  <th style="width:3%">ID    </th>
+                  <th style="width:5%">用户名</th>
+                  <th style="width:10%;">标题  </th>
+                  <th style="width:18%">描述  </th>
+                  <th style="width:56%">文章  </th>
+                  <th style="width:8%">操作  </th>
+                </tr>
+              </thead>     
+            <tbody>
+              <% for(var i=0;i<banners.length;i++){ %>
+              <tr>
+                <td><%= banners[i].ID%></td>
+                <td><%= banners[i].username%></td>
+                <td><%= banners[i].title%></td>
+                <td><%= banners[i].description%></td>
+                <!-- <td><textarea style="width:100%;height:130px"><%= banners[i].article%></textarea></td> -->
+                <td><%= banners[i].article%></td>
+                <td>
+                  <a href="?act=mod&id=<%= banners[i].ID%>" class="mod">修改</a>
+                  <a href="?act=del&id=<%= banners[i].ID%>" onclick="return confirm('你真的要删除这条数据吗?')" class="del">删除</a>
+                </td>
+              </tr>
+              <% }%>
+            </tbody>        
+          </table>
+          <% if(typeof mod_data!='undefined'){ %>
+          <div class="shadow">
+          </div>
+          <div class="mod_dialog" style="background-image: url(/upload/aaa.png);">
+            <form action="?" method="post" >
+              <input type="hidden" name="mod_id" value="<%= mod_data.ID%>"/>
+              用户：<input type="text" name="username" value="<%= mod_data.username%>" style="width:50%"/><br>
+              标题：<input type="text" name="title" value="<%= mod_data.title%>"  style="width:50%"/><br>
+              描述：<textarea name="description" style="width:90%;"><%= mod_data.description%></textarea><br>
+              文章：<textarea name="article" style="width:90%;height:200px;"><%= mod_data.article%></textarea><br>
+              <input type="submit" value="修改" />
+              <a href="/admin/banners">取消修改</a>
+            </form>
+          </div>
+          <% }%>
+          <br>
+          <div style="background-image: url(/upload/bb.png);width: 500px">
+            <form action="?" method="post" enctype="multipart/form-data">
+              用户：<input type="text" name="username" style="width:60%" /><br>
+              标题：<input type="text" name="title"  style="width:60%"/><br>
+              描述：<input type="text" name="description" style="width:60%" /><br>
+              <!-- 文章：<br><textarea name="article"  style="width:60%;height:150px;margin-left: 9%"></textarea><br> -->
+              文章：<br><input name="article"  style="width:60%;height:150px;margin-left: 9%"><br>
+                <input type="submit" value="添加" />
+            </form>
+          </div> 
+        </div>
+      </div>
+  </body>
+</html>
+
+

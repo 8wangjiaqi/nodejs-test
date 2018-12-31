@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+          <title>管理员登录</title>
+            </head>
+              <style type="text/css">
+              .bg {
+                background: url(/upload/login.jpg);
+                height:650px;
+                text-align: center;                      
+                line-height: 650px;                                      
+              }
+              .bg-blur {
+                float: left;
+                width: 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                -webkit-filter: blur(15px);
+                -moz-filter: blur(15px);
+                -o-filter: blur(15px);
+                -ms-filter: blur(15px);
+                filter: blur(15px);
+                z-index: -1;
+              }
+              .content-front {
+                position:absolute;
+                left: 35%;
+                top: 25%;
+                width: 30%;
+                height: 50%;
+                border: 4px solid gainsboro;
+                line-height: 50%;
+                text-align: center;
+                background-color: white;                                                          
+              }
+              .image{
+                margin-top: 20px;
+                width: 100%;
+                height: 25%;
+              }
+              img{
+                height: 100%;
+                border-radius: 100px; 
+              }
+              .form{
+                margin-top: 20px;
+                width: 100%;
+                height: 55%;
+                text-align: center;
+              }
+              .form input{
+                width: 50%;
+                height: 30px;
+                line-height: 30px;
+              }
+              .username{
+                float:left;
+                width: 100%;
+                height: 33%;
+              }
+              .password{
+                margin-top:10px;
+                float:left;
+                width: 100%;
+                height: 33%;
+              }
+              .submit{
+                margin-top:10px;
+                float:left;
+                width: 100%;
+                height: 23%;
+              }
+              .submit input{
+                width: 20%;
+                height: 30px;
+                color: white;
+                background-color: #207B94;
+              }
+              </style>
+            <body>
+          <div>
+            <div class="bg bg-blur"></div>
+             <div class="content content-front">
+              <div class="image">
+                <img src="/upload/login.jpg" alt="头像"/>
+              </div>
+              <div class="form">
+                <form action="/admin/login" method="post">
+                  <div class="username">
+                    用户：<input type="text" name="name" />
+                  </div>  
+                  </br></br> 
+                  <div class="password">  
+                    密码：<input type="password" name="password" />
+                  </div>
+                  </br></br></br></br> 
+                  <div class="submit">  
+                    <input type="submit" value="登录"/>
+                  </div>                                                            
+              </form>                                                     
+           </div>                                
+        </div>                                                                                     
+     </div>      
+   </body>   
+</html>
+

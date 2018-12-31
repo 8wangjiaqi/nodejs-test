@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>蜗牛旅行</title>
+	</head>
+	<style type="text/css">
+		.a{
+			float: left;
+			height: 650px;
+			width: 17%;
+			height: 100%;
+			background-color: #207B94;
+			position:fixed;
+			left:10px;
+
+		}
+		.a a{
+			text-decoration: none;
+			display: block;
+			color: white;
+			height: 50px;
+			line-height: 50px;
+			font-size: 18px;
+			padding-left: 45px;
+			border-bottom: 1px dashed ghostwhite;
+			
+		}
+		.a a:hover { 
+			color:orange; 
+			text-decoration: underline;
+			font-size: 20px;
+			font-weight: bold;
+		} 
+		.snail{
+			width: 100%;
+			text-align: center;
+			margin-bottom: 30px;
+		}
+		.snail img{
+			width: 50%;
+		}
+		.content-wrap{
+			float: right;
+			width: 82%;
+			height: 650px;
+		}
+		.top{
+			width: 100%;
+			height: 80px;
+			line-height: 80px;
+			border-bottom: solid 1px silver;
+		}
+		.header{
+			float: left;
+			height: 100%;
+			margin-left: 20px;
+		}
+		.header img{
+			height: 80%;
+			border-radius: 100%;
+		}
+		#hi{
+			margin-left: 20px;
+			height: 60px;
+			font-size: 14px;
+			color: #101010;
+		}
+		.left{
+			font-size: 14px;
+			float: right;
+			color: #207B94;
+		}
+		.number{
+			width: 100%;
+			height: 240px;
+		}
+		.enroll{
+			float: left;
+			width: 25%;
+			height: 80%;
+			background-color: orange;
+			margin-top: 20px;
+			margin-left: 6%;
+		}
+		.visit{
+			float: left;
+			width: 25%;
+			height: 80%;
+			background-color: palevioletred;
+			margin-top: 20px;
+			margin-left: 6%;
+		}
+		.total{
+			float: left;
+			width: 25%;
+			height: 80%;
+			background-color: darkseagreen;
+			margin-top: 20px;
+			margin-left: 6%;
+		}
+		.quantity{
+			margin-top: 32px;
+			color: white;
+			font-size: 45px;
+			text-align: center;
+		}
+		#enroll_number{
+			margin-top: 30px;
+			font-size: 18px;
+			text-align: center;
+		}
+		.pic{
+			width: 100%;
+			height: 330px;
+		}
+		.title{
+			margin-left: 40px;
+			font-size: 20px;
+			color: #101010;
+			margin-bottom: 10px;
+		}
+		.pic_number{
+			float: left;
+			width: 49%;
+			height: 330px;
+		}
+		.pic_number .pic_pic img{
+			width: 90%;
+			max-height: 270px;
+		}
+	</style>
+	<script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+	<script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/exporting.js"></script>
+	<script>
+	  $(function () {
+	  $('#container').highcharts({
+		  chart: {
+			  type: 'line'
+		  },
+		  title: {
+			  text: '周对比访问量'
+		  },
+		  subtitle: {
+			  text: 'sanil: Welcome!'
+		  },
+		  xAxis: {
+			  categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+		  },
+		  yAxis: {
+			  title: {
+				  text: '访问人数'
+			  }
+		  },
+		  tooltip: {
+			  enabled: false,
+			  formatter: function() {
+				  return '<b>'+ this.series.name +'</b>'+this.x +': '+ this.y +'°C';
+			  }
+		  },
+		  plotOptions: {
+			  line: {
+				  dataLabels: {
+					  enabled: true
+				  },
+				  enableMouseTracking: false
+			  }
+		  },
+		  series: [{
+			  name: '本周',
+			  data: [7, 6, 9, 14, 16, 17, 14]
+		  }, {
+			  name: '上周',
+			  data: [3, 4, 5, 8, 11, 10, 6]
+		  }]
+	  });
+	  $('#container2').highcharts({
+		  chart: {
+			  type: 'line'
+		  },
+		  title: {
+			  text: '周注册用户量'
+		  },
+		  subtitle: {
+			  text: 'sanil: Welcome!'
+		  },
+		  xAxis: {
+			  categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+		  },
+		  yAxis: {
+			  title: {
+				  text: '注册人数'
+			  }
+		  },
+		  tooltip: {
+			  enabled: false,
+			  formatter: function() {
+				  return '<b>'+ this.series.name +'</b>'+this.x +': '+ this.y +'°C';
+			  }
+		  },
+		  plotOptions: {
+			  line: {
+				  dataLabels: {
+					  enabled: true
+				  },
+				  enableMouseTracking: false
+			  }
+		  },
+		  series: [{
+			  name:'注册量',
+			  data: [3,4 ,6, 7, 5, 6, 9, 10] }]
+	  });
+  });
+	</script>
+	<body  style="background-image: url(/upload/d1.png);">
+		<div class="page">
+			<div class="a">
+				<div class="snail">
+					<img src="/upload/snail.png"/>
+				</div>
+				<% include components/left-inc.ejs %>
+			</div>
+			
+			<div class="content-wrap">
+
+				<div class="top">
+					<div class="header">
+						<img src="/upload/header.png"/>
+					</div>
+					<span id="hi">
+						小仙女，你好哦！
+					</span>
+					<span class="left">
+						蜗牛旅行
+					</span>
+				</div>
+				<div id="container" style="width: 650px;height:400px;margin-top:20px"></div>
+				<div id="container2" style="width: 650px;height:400px;margin-left: 700px;margin-top: -400px;"></div>
+				<div class="number">
+					<div class="enroll">
+						<div class="quantity">
+							10
+						</div>
+						<div id="enroll_number">
+							今日注册用户量
+						</div>
+					</div>
+					<div class="visit">
+						<div class="quantity">
+							100
+						</div>
+						<div id="enroll_number">
+							今日访问总量
+						</div>
+					</div>
+					<div class="total">
+						<div class="quantity">
+							999
+						</div>
+						<div id="enroll_number">
+							累计用户量
+						</div>
+					</div>
+				</div>
+				
+				<!-- <div class="pic">
+					<div class="pic_number">
+					
+					</div>
+					<div class="pic_number">
+					
+					</div>
+				</div> -->
+			</div>
+		</div>
+		
+	</body>
+</html>
