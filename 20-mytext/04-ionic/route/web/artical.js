@@ -23,15 +23,15 @@ router.post('/',(req,res)=>{
     }
     else 
     {
-      db.query(`INSERT INTO my_gongluo_table (username,title,description,article)
-      VALUE('${username}','${title}','${description}','${article}')`,(err,data)=>{
+      db.query(`INSERT INTO my_gongluo_table (username,title,description,article,src)
+      VALUE('${username}','${title}','${description}','${article}','header_1.jpg')`,(err,data)=>{
         //console.log('2:');
         if(err){
           console.error('1:',err);
           res.status(500).send('database error').end();
         }else{
           res.end('0');
-          console.log(data);
+          console.log('aaaaaaaaaaaaa',data);
         }
       }); 
     }
