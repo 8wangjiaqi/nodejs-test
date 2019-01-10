@@ -2,6 +2,7 @@
 
 var code = process.argv[2];
 if(process.argv.length<3){
+  console.log(typeof(code))
   console.log('请给出命令行参数');
   process.exit(1);
 }
